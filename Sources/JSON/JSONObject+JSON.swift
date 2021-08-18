@@ -7,10 +7,10 @@
 
 import Foundation
 
-extension JSONObeject: JSONCompatible {}
+extension JSONObject: JSONCompatible {}
 
 
-extension JSON where Base == JSONObeject {
+extension JSON where Base == JSONObject {
     /// JSON数据
     public var data: Data? {
         let data = try? JSONSerialization.data(withJSONObject: base.object as Any)

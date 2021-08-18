@@ -9,7 +9,7 @@ import Foundation
 
 /// JSON对象
 @dynamicMemberLookup
-public struct JSONObeject {
+public struct JSONObject {
     /// 对象
     let object: Any?
     
@@ -22,7 +22,7 @@ public struct JSONObeject {
 
 // MARK: - JSON对象的初始化函数
 
-extension JSONObeject {
+extension JSONObject {
     /// 使用JSON数据构造JSON对象
     /// - Parameter data: JSON数据
     public init(data: Data) {
@@ -49,23 +49,23 @@ extension JSONObeject {
 
 // MARK: - 下标访问
 
-extension JSONObeject {
+extension JSONObject {
     // JSON对象的关键字下标访问
-    public subscript(key: String) -> JSONObeject? {
+    public subscript(key: String) -> JSONObject? {
         guard let dict = self.json.dict else { return nil }
         let object = dict[key]
-        return JSONObeject(object)
+        return JSONObject(object)
     }
     
     // JSON对象的动态成员查询
-    public subscript(dynamicMember key: String) -> JSONObeject? {
+    public subscript(dynamicMember key: String) -> JSONObject? {
         self[key]
     }
 }
 
 // MARK: - 类型转换
 
-extension JSONObeject {
+extension JSONObject {
     /// 作为字符串
     public var string: String? {
         object as? String
@@ -87,19 +87,19 @@ extension JSONObeject {
     }
     
     /// 作为数组
-    public var array: [JSONObeject]? {
+    public var array: [JSONObject]? {
         guard let objectArray = object as? [Any] else { return nil }
         return objectArray.map { object in
-            JSONObeject(object)
+            JSONObject(object)
         }
     }
     
     /// 作为字典
-    public var dict: [String: JSONObeject]? {
+    public var dict: [String: JSONObject]? {
         guard let objectDict = object as? [String: Any] else { return nil }
-        var dict = [String: JSONObeject]()
+        var dict = [String: JSONObject]()
         objectDict.forEach { pair in
-            dict[pair.key] = JSONObeject(pair.value)
+            dict[pair.key] = JSONObject(pair.value)
         }
         return dict
     }

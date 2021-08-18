@@ -30,12 +30,12 @@
         }
         
         func testObject() {
-            XCTAssertEqual(JSONObeject(string: jsonStr).world?.string, world)
-            XCTAssertEqual(JSONObeject(data: jsonData).world?.string, world)
-            XCTAssertEqual(JSONObeject(dict: jsonDict).world?.string, world)
+            XCTAssertEqual(JSONObject(string: jsonStr).world?.string, world)
+            XCTAssertEqual(JSONObject(data: jsonData).world?.string, world)
+            XCTAssertEqual(JSONObject(dict: jsonDict).world?.string, world)
             
-            XCTAssertEqual(JSONObeject(string: jsonStr).json.string, noneSpaceStr)
-            XCTAssertEqual(JSONObeject(string: jsonStr).json.data, noneSpaceData)
-            XCTAssertEqual(JSONObeject(string: jsonStr).json.dict as? [String: String], jsonDict)
+            XCTAssertEqual(JSONObject(string: jsonStr).json.string, noneSpaceStr)
+            XCTAssertEqual(JSONObject(string: jsonStr).json.data, noneSpaceData)
+            XCTAssertEqual(JSONObject(string: jsonStr).json.dict as? [String: String], jsonDict)
         }
     }
